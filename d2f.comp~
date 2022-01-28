@@ -1,0 +1,21 @@
+#!/bin/bash
+# (root name) -> (fb)
+
+# # convert a .drawio diagram into a factbase
+
+# d2f {
+#   in: [root name]
+#   out: [fb]
+# }
+
+echo d2f 1>&2
+
+ductroot=/dev/fd/3
+ductname=/dev/fd/4
+ductfb=/dev/fd/5
+
+read root <$ductroot
+read name <$ductname
+fb=$ductfb
+
+$root/d2f/d2f.bash $root $name >$fb

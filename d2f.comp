@@ -1,0 +1,19 @@
+#!/bin/bash
+# # convert a .drawio diagram into a factbase
+
+# inputs
+#   root
+#   name
+# outputs:
+#   PROLOG-style factbase (facts 1 per line)
+
+# usage: d2f.comp 3<root 4<name 5>output
+
+ductroot=/dev/fd/3
+ductname=/dev/fd/4
+ductfb=/dev/fd/5
+
+read root <$ductroot
+read name <$ductname
+
+$root/d2f/d2f.bash $root $name >$ductfb
